@@ -490,9 +490,6 @@
                                                 $subjectErr = "Subject is required";
                                                 } else {
                                                 $subject = test_input($_POST["subject"]);
-                                                if (!preg_match("^[a-zA-Z0-9-.,' ]*$",$subject)) {
-                                                    $subjectErr = "Please do not use any special character in subject field";
-                                                }
                                                 }
                                                 if (empty($_POST["message"])) {
                                                 $messageErr = "Message is required";
