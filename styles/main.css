@@ -7733,3 +7733,10 @@ a.credit {
 .carousel-indicators{
   bottom: -10px;
 }
+
+.error{
+  color: #A52100;
+}
+.success{
+  color:#4BB543;
+}
