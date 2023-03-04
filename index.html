@@ -466,109 +466,43 @@
                                 <div class=col-md-9>
                                     <div class="card mb-0" data-aos=zoom-in>
                                         <div class="h4 title text-center">Contact Me</div>
-                                        <?php
-                                            $nameErr = $emailErr = $subjectErr = $messageErr = NULL;
-                                            $name = $email = $subject = $message = "";
-                                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                                if (empty($_POST["name"])) {
-                                                $nameErr = "Name is required";
-                                                } else {
-                                                $name = test_input($_POST["name"]);
-                                                if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-                                                    $nameErr = "Only letters and white space allowed";
-                                                }
-                                                }
-                                                if (empty($_POST["email"])) {
-                                                $emailErr = "Email is required";
-                                                } else {
-                                                $email = test_input($_POST["email"]);
-                                                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                                                    $emailErr = "Invalid email address";
-                                                }
-                                                }
-                                                if (empty($_POST["subject"])) {
-                                                $subjectErr = "Subject is required";
-                                                } else {
-                                                $subject = test_input($_POST["subject"]);
-                                                }
-                                                if (empty($_POST["message"])) {
-                                                $messageErr = "Message is required";
-                                                } else {
-                                                $message = test_input($_POST["message"]);
-                                                }
-                                            }
-                                            function test_input($data) {
-                                                $data = trim($data);
-                                                $data = stripslashes($data);
-                                                $data = htmlspecialchars($data);
-                                                return $data;
-                                            }
-                                        ?>
+                                        
                                         <div class=row>
                                             <div class=col-md-6>
                                                 <div class=card-body>
-                                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#contact" method="POST">
+                                                    <form action=https://formspree.io/shuklar727@gmail.com method=POST>
                                                         <div class="p pb-3"><strong>Feel free to contact me</strong></div>
                                                         <div class="row mb-3">
                                                             <div class=col>
                                                                 <div class=input-group><span class=input-group-addon><i class="fa fa-user-circle"></i></span>
-                                                                    <input class=form-control placeholder="Name" name="name" id="name" value="<?php echo $name; ?>" required>
-                                                                    <p class="error"> <?php echo $nameErr ?> </p>
+                                                                    <input class=form-control name=name placeholder=Name required>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <div class=col>
                                                                 <div class=input-group><span class=input-group-addon><i class="fa fa-file-text"></i></span>
-                                                                    <input class=form-control placeholder="Subject" name="subject" id="subject" value="<?php echo $subject; ?>" required>
-                                                                    <p class="error"> <?php echo $subjectErr ?> </p>
+                                                                    <input class=form-control name=Subject placeholder=Subject required>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <div class=col>
                                                                 <div class=input-group><span class=input-group-addon><i class="fa fa-envelope"></i></span>
-                                                                    <input class=form-control placeholder="E-mail" name="email" id="email" value="<?php echo $email; ?>" required type=email>
-                                                                    <p class="error"> <?php echo $emailErr ?> </p>
+                                                                    <input class=form-control name=_replyto placeholder=E-mail required type=email>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <div class=col>
                                                                 <div class=form-group>
-                                                                    <textarea class=form-control placeholder="Your Message" name="message" id="message" value="<?php echo $message; ?>" required></textarea>
-                                                                    <p class="error"> <?php echo $messageErr ?> </p>
+                                                                    <textarea class=form-control name=message placeholder="Your Message" required></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class=row>
                                                             <div class=col>
                                                                 <button class="btn btn-primary" type=submit>Send</button>
-                                                                <?php 
-                                                                    if(isset($_POST['submit'])){
-                                                                        $name = $_POST['name'];
-                                                                        $email = $_POST['email'];
-                                                                        $phone = $_POST['subject'];
-                                                                        $message = $_POST['message'];
-                                                                        
-                                                                        $to = "hello@hrishikeshshukla.in";
-                                                                        $headers = "From: Portfolio Website";
-                                                                        $subject = "Response From Portfolio Website";
-                                                                        $message = "New message from ".$name.". \n Subject is ".$subject.", email is ".$email.", and message is ".$message.".";
-                                                                        if(empty($name) or empty($email) or empty($phone) or empty($message)){
-                                                                        echo "<p class='text-center error'>* Fill the required details!</p>";
-                                                                        }elseif(isset($nameErr) or isset($phoneErr) or isset($pinErr) or isset($messageErr)){
-                                                                        echo "<p class='text-center error'>* Please check your entries!</p>";
-                                                                        $nameErr = $phoneErr = $pinErr = $messageErr = NULL;
-                                                                        }else{
-                                                                            if(mail($to, $subject, $message, $headers)){
-                                                                                echo "<p class='text-center text-light success'>* Thankyou for getting in touch. We will reply as soon as possible!</p> <?php";
-                                                                            }else{
-                                                                                echo "<p class='text-center text-light error'>* Something went wrong. Please drop a mail!</p>";
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                ?>
                                                             </div>
                                                         </div>
                                                     </form>
